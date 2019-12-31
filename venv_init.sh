@@ -13,4 +13,4 @@ if [[ -z "${VIRTUAL_ENV}" ]]; then
 fi
 
 echo "Instlling Python prerequesites..."
-pip3 install -r requirements.txt
+pip3 install -r app/requirements.txt
