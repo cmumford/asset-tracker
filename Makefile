@@ -1,6 +1,6 @@
 
 root_dir=$(shell pwd)
-app_dir = ${root_dir}/app
+app_dir = ${root_dir}/goapp
 
 .PHONY: run
 run:
