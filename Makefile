@@ -2,6 +2,10 @@ PORT=8080
 PROJECT_ID=easy-asset-tracker
 ENV_ERR=">> ERROR: virtual env not active (see README.md)."
 
+export CLOUD_SQL_USERNAME=asset-web
+export CLOUD_SQL_PASSWORD=password
+export CLOUD_SQL_DATABASE_NAME=easy_asset_tracker
+
 .PHONY: run
 run:
 	@[ "${VIRTUAL_ENV}" ] || ( echo ${ENV_ERR}; exit 1 )
