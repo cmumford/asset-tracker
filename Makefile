@@ -1,5 +1,25 @@
+PORT=8080
+PROJECT_ID=easy-asset-tracker
+ENV_ERR=">> ERROR: virtual env not active (see README.md)."
 
 .PHONY: run
 run:
-	@[ "${VIRTUAL_ENV}" ] || ( echo ">> virtual env not active (see README.md)."; exit 1 )
+	@[ "${VIRTUAL_ENV}" ] || ( echo ${ENV_ERR}; exit 1 )
 	python3 app/main.py
+
+# Doesn't work well for Python3 apps. Some GAE docs suggest using it
+# and others suggest `run` above.
+.PHONY: devserver
+devserver:
+	cd app && dev_appserver.py --application=${PROJECT_ID} app.yaml
+
+# So far untested.
+.PHONY: unicorn
+unicorn:
+	@[ "${VIRTUAL_ENV}" ] || ( echo ${ENV_ERR}; exit 1 )
+	cd app && gunicorn -b :${PORT} main:app
+
+.PHONY: test
+test:
+	@[ "${VIRTUAL_ENV}" ] || ( echo ${ENV_ERR}; exit 1 )
+	pytest app
