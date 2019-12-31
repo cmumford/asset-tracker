@@ -2,6 +2,7 @@ PORT=8080
 PROJECT_ID=easy-asset-tracker
 ENV_ERR=">> ERROR: virtual env not active (see README.md)."
 
+# When running the development server.
 export CLOUD_SQL_USERNAME=asset-web
 export CLOUD_SQL_PASSWORD=password
 export CLOUD_SQL_DATABASE_NAME=easy_asset_tracker
@@ -27,3 +28,8 @@ unicorn:
 test:
 	@[ "${VIRTUAL_ENV}" ] || ( echo ${ENV_ERR}; exit 1 )
 	pytest app
+
+.PHONY: db
+db:
+	scripts/db_delete.sh
+	scripts/db_init.sh

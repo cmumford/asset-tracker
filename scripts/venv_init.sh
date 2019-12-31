@@ -12,9 +12,9 @@ if [[ -z "${VIRTUAL_ENV}" ]]; then
   source ${venv_dir}/bin/activate
 fi
 
-echo "Instlling Python prerequesites..."
-pip3 install -r app/requirements.txt
-
 # Don't want to install to production server.
 echo "Instlling Python developer prerequesites..."
 pip3 install -r dev_requirements.txt
+
+echo "Instlling Python prerequesites..."
+pip3 install -r app/requirements.txt

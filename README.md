@@ -15,23 +15,22 @@ sudo apt-get install mysql-server mysql-client
 
 https://cloud.google.com/solutions/setup-mysql
 
-```sql
-CREATE USER 'asset-web'@'localhost' IDENTIFIED BY 'password';
-CREATE DATABASE easy-asset-tracker;
-GRANT ALL PRIVILEGES ON * . * TO 'asset-web'@'localhost';
-FLUSH PRIVILEGES;
+Recreate the test database.
+
+```sh
+make db
 ```
 
 ## Setup and activate virtual environment
 
 ```sh
-. ./venv_init.sh
+. ./scripts/venv_init.sh
 ```
 
 ## Deactivate and delete virtual environment
 
 ```sh
-. ./venv_delete.sh
+. ./scripts/venv_delete.sh
 ```
 
 ## Run the development server
