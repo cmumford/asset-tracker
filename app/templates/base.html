@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="A simple asset tracking system.">
+    <meta name="author" content="Chris Mumford">
+    <link rel="icon" href="{{ url_for('app.static', filename='favicon.ico') }}">
+
+    <title>Reference Browser{{ ': %s' % (title,) if title else '' }}</title>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="{{ url_for('app.static', filename='css/ie10-viewport-bug-workaround.css') }}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('app.static', filename='css/main.css') }}" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body class="dark-body">
+    <div class="page-header">
+      <h1>Easy Asset Tracker<br><small>asset tracking system</small></h1>
+    </div>
+
+    <div class="container">
+
+      {% block body %}
+
+      {% endblock %}
+
+    </div><!-- /.container -->
+
+
+    {% block scripts %}
+        <!-- Bootstrap core JavaScript
+        ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="{{ url_for('app.static', filename='js/ie10-viewport-bug-workaround.js') }}"></script>
+    {% endblock %}
+  </body>
+</html>

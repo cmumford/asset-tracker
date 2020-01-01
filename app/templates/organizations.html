@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block body %}
+  {% for column in organizations | batch(2) -%}
+    <div class="row">
+      {%- for organization in column -%}
+        <div class="col-sm-6">
+          <a class="btn btn-default navbar-btn btn-wrap" href="{{ url_for('app.organizations', id=organization.id) }}">
+            <table>
+              <tr>
+                <td>{{ organization.name }}</td>
+              </tr>
+            </table>
+          </a>
+        </div> <!-- /.col -->
+      {%- endfor -%}
+    </div> <!-- /.row -->
+  {%- endfor %}
+{% endblock %}
