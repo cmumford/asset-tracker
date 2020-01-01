@@ -34,6 +34,7 @@ def CreateRoles(metadata, connection):
                     Column('name', String(80)),
                     )
     roles = [
+        {'id': 0, 'name': 'Super Administrator'},
         {'id': 1, 'name': 'Administrator'},
         {'id': 2, 'name': 'Standard user'},
         {'id': 3, 'name': 'Read-only'},
@@ -51,10 +52,11 @@ def CreateUsers(metadata, connection):
                     Column('organization_id', Integer),
                     )
     users = [
-        {'id': 1, 'name': 'chris', 'role_id': 1, 'organization_id': 1},
-        {'id': 2, 'name': 'std-user', 'role_id': 2, 'organization_id': 1},
-        {'id': 3, 'name': 'guest 1', 'role_id': 3, 'organization_id': 1},
-        {'id': 4, 'name': 'guest 2', 'role_id': 3, 'organization_id': 1},
+        {'id': 1, 'name': 'root', 'role_id': 0, 'organization_id': 0},
+        {'id': 2, 'name': 'admin', 'role_id': 1, 'organization_id': 1},
+        {'id': 3, 'name': 'std-user', 'role_id': 2, 'organization_id': 1},
+        {'id': 4, 'name': 'guest 1', 'role_id': 3, 'organization_id': 1},
+        {'id': 5, 'name': 'guest 2', 'role_id': 3, 'organization_id': 1},
     ]
     for user in users:
         ins = user_table.insert()
@@ -161,6 +163,7 @@ def CreateOrganizations(metadata, connection):
                     Column('name', String(256)),
                     )
     items = [
+        {'id': 0, 'name': 'Hosting'},
         {'id': 1, 'name': 'Summerville High School'},
         {'id': 2, 'name': 'Gunn High School'},
         {'id': 3, 'name': 'Palo Alto High School'},
