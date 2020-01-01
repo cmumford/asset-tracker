@@ -33,3 +33,4 @@ test:
 db:
 	scripts/db_delete.sh
 	scripts/db_init.sh
+	scripts/create_schema.sh
