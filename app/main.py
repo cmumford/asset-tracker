@@ -53,10 +53,13 @@ def main():
 
 @blueprint.route('/organizations', strict_slashes=False)
 def organizations():
-    query = Organization.query.limit(40).all()
-    return render_template('organizations.html',
-                           organizations=query,
-                           )
+    query = Organization.query.order_by(Organization.name).limit(40)
+    return render_template('organizations.html', organizations=query)
+
+@blueprint.route('/organization/<organization_id>', strict_slashes=False)
+def organization(organization_id):
+    org = Organization.query.filter(Organization.id == organization_id).first()
+    return render_template('organization.html', title=org.name)
 
 if __name__ == '__main__':
     #dirpath = os.path.dirname(os.path.abspath(__file__))
