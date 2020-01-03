@@ -6,11 +6,11 @@ Python 3:
 sudo apt-get install python3 python3-pip
 ```
 
-### MySQL
+### MariaDB
 
-Install MySQL:
+Install MariaDB:
 ```sh
-sudo apt-get install mysql-server mysql-client
+sudo apt-get install mariadb-server mariadb-client
 ```
 
 https://cloud.google.com/solutions/setup-mysql
