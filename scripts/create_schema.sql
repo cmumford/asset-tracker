@@ -2,8 +2,8 @@
 USE easy_asset_tracker;
 
 CREATE TABLE organization (
-  id INT NOT NULL,
-  name VARCHAR(256),
+  id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(256) NOT NULL,
   PRIMARY KEY (id)
 );
 

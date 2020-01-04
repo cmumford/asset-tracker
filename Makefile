@@ -10,7 +10,7 @@ export CLOUD_SQL_DATABASE_NAME=easy_asset_tracker
 .PHONY: run
 run:
 	@[ "${VIRTUAL_ENV}" ] || ( echo ${ENV_ERR}; exit 1 )
-	python3 app/main.py
+	python3 main.py
 
 # Doesn't work well for Python3 apps. Some GAE docs suggest using it
 # and others suggest `run` above.
@@ -24,10 +24,18 @@ unicorn:
 	@[ "${VIRTUAL_ENV}" ] || ( echo ${ENV_ERR}; exit 1 )
 	cd app && gunicorn -b :${PORT} main:app
 
-.PHONY: test
-test:
+.PHONY: unit_tests
+unit_tests:
 	@[ "${VIRTUAL_ENV}" ] || ( echo ${ENV_ERR}; exit 1 )
-	pytest app
+	pytest --setup-show app/tests/unit/
+
+.PHONY: functional_tests
+functional_tests:
+	@[ "${VIRTUAL_ENV}" ] || ( echo ${ENV_ERR}; exit 1 )
+	pytest --setup-show app/tests/functional/
+
+.PHONY: test
+test: unit_tests functional_tests
 
 .PHONY: db
 db:

@@ -7,15 +7,15 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="A simple asset tracking system.">
     <meta name="author" content="Chris Mumford">
-    <link rel="icon" href="{{ url_for('app.static', filename='favicon.ico') }}">
+    <link rel="icon" href="{{ url_for('main.static', filename='favicon.ico') }}">
 
     <title>Reference Browser{{ ': %s' % (title,) if title else '' }}</title>
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="{{ url_for('app.static', filename='css/ie10-viewport-bug-workaround.css') }}" rel="stylesheet">
+    <link href="{{ url_for('main.static', filename='css/ie10-viewport-bug-workaround.css') }}" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="{{ url_for('app.static', filename='css/main.css') }}" rel="stylesheet">
+    <link href="{{ url_for('main.static', filename='css/main.css') }}" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -43,7 +43,7 @@
         ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
         <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <script src="{{ url_for('app.static', filename='js/ie10-viewport-bug-workaround.js') }}"></script>
+        <script src="{{ url_for('main.static', filename='js/ie10-viewport-bug-workaround.js') }}"></script>
     {% endblock %}
   </body>
 </html>
