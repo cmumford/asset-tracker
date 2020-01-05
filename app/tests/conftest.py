@@ -33,8 +33,9 @@ def test_client():
 
     ctx.pop()
 
-@pytest.fixture(scope='module')
-def init_database():
+def make_test_data():
+    """In a separate method so that it can be easily called by the appliction
+    to create test app data for development purposes."""
     db.drop_all()   # Delete any existing data in the database from prior run.
     db.create_all() # Create db tables.
 
@@ -147,3 +148,7 @@ def init_database():
                 db.session.add(asset)
 
     db.session.commit()
+
+@pytest.fixture(scope='module')
+def init_database():
+    make_test_data()

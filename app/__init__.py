@@ -34,6 +34,13 @@ def create_app(config_filename=None):
 
     initialize_extensions(app)
     register_blueprints(app)
+
+    if True:
+        # Creating test for easy development. Delete for deployment.
+        from app.tests import conftest
+        with app.app_context():
+            conftest.make_test_data()
+
     return app
 
 def initialize_extensions(app):
