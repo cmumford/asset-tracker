@@ -2,6 +2,8 @@ from flask import render_template
 
 from app.models import (
     Organization,
+    OrganizationRole,
+    User,
 )
 
 from . import admin_blueprint
@@ -15,4 +17,9 @@ def organizations():
 @admin_blueprint.route('/organization/<organization_id>', strict_slashes=False)
 def organization(organization_id):
     org = Organization.query.filter(Organization.id == organization_id).first()
-    return render_template('admin/organization.html', title=org.name)
+
+    user_count = OrganizationRole.query.filter(OrganizationRole.organization_id
+            == organization_id).count()
+    return render_template('admin/organization.html',
+            title=org.name,
+            user_count=user_count)
