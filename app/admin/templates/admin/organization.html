@@ -3,5 +3,11 @@
 {% block body %}
   <h1>{{title}}</h1>
 
-  <p>User count: {{user_count}}</p>
+  <p>User count: 
+    <a href="{{ url_for('admin.organization_users',
+                        organization_id=organization_id,
+                        what='users') }}">
+      {{user_count}}
+    </a>
+  </p>
 {% endblock %}
